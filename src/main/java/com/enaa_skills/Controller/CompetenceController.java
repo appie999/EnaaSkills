@@ -2,7 +2,6 @@ package com.enaa_skills.Controller;
 
 import com.enaa_skills.Dto.CompetenceDto;
 import com.enaa_skills.Service.CompetanceService;
-import jdk.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
