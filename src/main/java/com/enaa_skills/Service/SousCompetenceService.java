@@ -3,10 +3,9 @@ package com.enaa_skills.Service;
 
 import com.enaa_skills.Dto.SousCompetenceDto;
 import com.enaa_skills.Entity.SousCompetence;
-import com.enaa_skills.Mapper.SousCompetanceMapper;
-import com.enaa_skills.Repository.SousCompetanceRepo;
+import com.enaa_skills.Mapper.SousCompetenceMapper;
+import com.enaa_skills.Repository.SousCompetenceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +14,11 @@ import java.util.List;
 public class SousCompetenceService {
 
 
-    @Qualifier("sousCompetanceMapper")
     @Autowired
-    private SousCompetanceMapper mapper;
+    private SousCompetenceMapper mapper;
 
     @Autowired
-    private SousCompetanceRepo repo;
+    private SousCompetenceRepo repo;
 
 
     public SousCompetenceDto saveSousCompetence(SousCompetenceDto sousCompetenceDto){

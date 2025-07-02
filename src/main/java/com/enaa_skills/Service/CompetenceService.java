@@ -3,34 +3,33 @@ package com.enaa_skills.Service;
 import com.enaa_skills.Dto.CompetenceDto;
 import com.enaa_skills.Entity.Competence;
 import com.enaa_skills.Mapper.CompetenceMapper;
-import com.enaa_skills.Repository.CompetanceRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.enaa_skills.Repository.CompetenceRepo;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
-public class CompetanceService {
+public class CompetenceService {
 
-    @Autowired
-    private CompetanceRepo repo;
+    private final CompetenceRepo repo;
 
-    @Autowired
-    private CompetenceMapper mapper;
+    private final CompetenceMapper mapper;
 
-    public CompetenceDto saveCompetance(CompetenceDto competenceDto){
+    public CompetenceDto saveCompetence(CompetenceDto competenceDto){
         return mapper.toDto(repo.save(mapper.toEntity(competenceDto)));
     }
 
-    public CompetenceDto getCompetanceById(Long id){
+    public CompetenceDto getCompetenceById(Long id){
         return mapper.toDto(repo.findById(id).orElseThrow(()->new RuntimeException("competance not found")));
     }
 
-    public List<CompetenceDto> getAllCompetances(){
+    public List<CompetenceDto> getAllCompetences(){
         return repo.findAll().stream().map(competence -> mapper.toDto(competence)).toList();
     }
 
-    public CompetenceDto editCompetance(Long id, CompetenceDto competenceDto){
+    public CompetenceDto editCompetence(Long id, CompetenceDto competenceDto){
         Competence competence = repo.findById(id).get();
         competence.setId(competenceDto.getId());
         competence.setName(competenceDto.getName());
@@ -39,7 +38,7 @@ public class CompetanceService {
         return mapper.toDto(repo.save(competence));
     }
 
-    public void deleteCompetance(Long id){
+    public void deleteCompetence(Long id){
         repo.deleteById(id);
     }
 
